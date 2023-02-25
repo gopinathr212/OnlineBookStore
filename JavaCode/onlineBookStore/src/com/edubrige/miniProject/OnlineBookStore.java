@@ -24,7 +24,7 @@ public class OnlineBookStore {
 		System.out.println("------------------------------------------------------------------------------");
 		System.out.print("\t\t Tell us Who you are?");
 		int choice = Integer.parseInt(br.readLine());
-
+        //Buyer section
 		if (choice == 1) {
 			System.out.println("==============================================================================");
 			System.out.println("==========================  ENTER LOGIN DETAILS ==============================");
@@ -68,6 +68,7 @@ public class OnlineBookStore {
 							.println("==============================================================================");
 					String status = null;
 					switch (operationNumber) {
+					//Showing the books which has qunatity more than zero
 					case 1:
 						System.out.println("Show Books");
 						try {
@@ -90,6 +91,7 @@ public class OnlineBookStore {
 							login = false;
 						}
 						break;
+					//book filter using name,genre,author
 					case 2:
 						System.out.println("Book Search filter");
 						System.out.println("11. Book Name\n12. Book Genre\n13. Author");
@@ -100,6 +102,7 @@ public class OnlineBookStore {
 						System.out.println(
 								"==============================================================================");
 						System.out.println("Search Books");
+						//filter using bookname
 						if (filterNum == 11) {
 							System.out.print("Enter book name: ");
 							String bookName = br.readLine();
@@ -119,7 +122,7 @@ public class OnlineBookStore {
 							}
 							break;
 						}
-
+						//filter using BookGenre
 						else if (filterNum == 12) {
 							System.out.print("Enter book Genre: ");
 							String bookGenre = br.readLine();
@@ -138,7 +141,9 @@ public class OnlineBookStore {
 								e.printStackTrace();
 							}
 							break;
-						} else if (filterNum == 13) {
+						} 
+						//filter using AuthorName
+						else if (filterNum == 13) {
 							System.out.print("Enter Author Name: ");
 							String AuthorName = br.readLine();
 							try {
@@ -165,6 +170,7 @@ public class OnlineBookStore {
 						if (status.equals("n") || status.equals("N")) {
 							login = false;
 						}
+						//Ordering the book which is needed
 					case 3:
 						System.out.println("Book Your Orders");
 						System.out.println("Enter Book Name:");
@@ -241,7 +247,9 @@ public class OnlineBookStore {
 			} else {
 				System.out.println("Invalid password");
 			}
-		} else if (choice == 2) {
+		} 
+		//seller section
+		else if (choice == 2) {
 			System.out.println("==============================================================================");
 			System.out.println("==========================  ENTER LOGIN DETAILS ==============================");
 			System.out.print("\t\t Enter your username:");
@@ -280,6 +288,7 @@ public class OnlineBookStore {
 							.println("==============================================================================");
 					String status = null;
 					switch (sellerChoice) {
+						//Showing the every books
 					case 1:
 						System.out.println("Show Books");
 						try {
@@ -302,7 +311,7 @@ public class OnlineBookStore {
 							login1 = false;
 						}
 						break;
-
+                     //add new books 
 					case 2:
 						System.out.println("Add Books");
 						System.out.println("Enter Book name:");
@@ -352,9 +361,9 @@ public class OnlineBookStore {
 							login1 = false;
 						}
 						break;
-
+                     //deleting the books
 					case 3:
-						System.out.println("Add Books");
+						System.out.println("Delete  Books");
 						System.out.println("Enter Book Id:");
 						int delBookId = Integer.parseInt(br.readLine());
 						ps = conn.prepareStatement("delete from books where book_id =?");
@@ -389,7 +398,9 @@ public class OnlineBookStore {
 					}
 				} while (login1);
 			}
-		} else if (choice == 3) {
+		}
+		//Creating new buyer user
+		else if (choice == 3) {
 			System.out.println("Welcome to EBook");
 			System.out.println("We are to create an new user Account");
 			System.out.println("Enter your User name:");
